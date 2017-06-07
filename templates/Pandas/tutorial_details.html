@@ -1,0 +1,65 @@
+{% extends 'Pandas/base.html' %}
+
+{% block content %}
+    <style>
+        .post-content {
+            opacity: 0.8;
+            top: 0;
+            right: 0;
+            margin: 10px;
+            margin-right: 25px;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+        }
+
+        .thumbnail {
+            position: relative;
+            min-height: 131px;
+            min-width: 204px;
+        }
+    </style>
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h2>{{ tutorial.nazwa }}</h2>
+            <p>{{ tutorial.opis }}</p>
+        </div>
+    </div>
+    <div class="container-fluid bg-3 text-center">
+        <div class="row">
+            <h3>Odcinki <i>{{ liczba_odcinkow }}</i><b> / {{ tutorial.planowana_liczba_odcinkow }}</b></h3><br><br>
+            {% if liczba_odcinkow > 0 %}
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Film</th>
+                            <th>Tytuł</th>
+                            <th>Opis</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for video in videos %}
+                            <tr>
+                                {#                {% autoescape off %}{{ video.link_youtube|safe }}{% endautoescape %}#}
+                                <td>
+                                    <iframe width="400" height="215"
+                                            src="https://www.youtube.com/embed/{{ video.link_youtube }}"
+                                            frameborder="0" allowfullscreen></iframe>
+                                </td>
+                                <td><b>{{ video.tytul }}</b></td>
+                                <td style="">{{ video.opis }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info" style="margin: 100px;">
+                    <h1><strong>Info!</strong> Kurs w chwili obecnej nie posiada żadnych odcinków</h1>
+                </div>
+            {% endif %}
+        </div>
+    </div><br>
+
+{% endblock %}

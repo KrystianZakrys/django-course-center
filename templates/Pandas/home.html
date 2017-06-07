@@ -1,0 +1,96 @@
+{% extends 'Pandas/base.html' %}
+
+{% block content %}
+    <style>
+        .post-content {
+            opacity: 0.8;
+            top: 0;
+            right: 0;
+            margin: 10px;
+            margin-right: 25px;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+        }
+
+        .thumbnail {
+            position: relative;
+            min-height: 131px;
+            min-width: 204px;
+        }
+
+        .carousel-inner img {
+            width: 100%; /* Set width to 100% */
+            margin: auto;
+            min-height: 200px;
+        }
+
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+        @media (max-width: 600px) {
+            .carousel-caption {
+                background-color: rgba(0, 0, 0, 0.6);
+                display: none;
+            }
+        }
+    </style>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            {% for item in karuzela_items %}
+                 <li data-target="#myCarousel" data-slide-to="   {{ forloop.counter }} " class="{{ item.aktywny }}"></li>
+            {% endfor %}
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            {% for item in karuzela_items %}
+                <div class="item {{ item.aktywny }}">
+                    <img src="/media/{{ item.zdjecie }}" alt="Image">
+                    <div class="carousel-caption">
+                        <h3>{{ item.tytul }}</h3>
+                        <p>{{ item.krotki_opis }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        {#    <div class="jumbotron">#}
+        {#        <div class="container text-center">#}
+        {#            <h1>Panda Tutorial Center</h1>#}
+        {#            <p>Bierzcie i jedzcie z tego wszyscy...</p>#}
+        {#        </div>#}
+        {#    </div>#}
+
+        <div class="container-fluid bg-3 text-center">
+            <h3>Najnowsze tutoriale</h3><br>
+            <div class="row">
+                {% for tutorial in tutoriale %}
+                    <div class="col-sm-3">
+                        <a href="{% url 'tutorial_details' pk=tutorial.pk %}">
+                            <img src="/media/{{ tutorial.miniaturka }}" class="img-rounded" style="width:100%"
+                                 alt="Image">
+                            {% if not tutorial.playlista is None %}
+                                <a href="{{ tutorial.playlista }}"
+                                   class="glyphicon glyphicon-play post-content btn btn-danger"
+                                   style="padding-top: 6px"></a>
+                            {% endif %}
+                            <h2>{{ tutorial.nazwa }}</h2>
+                            <p>{{ tutorial.opis }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <br>
+{% endblock %}

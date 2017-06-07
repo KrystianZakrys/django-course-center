@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Panda Tutorial Center</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://use.fontawesome.com/1c2bb8950a.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        #searchbar {
+            background-color: #666;
+            color: #FFF;
+            width: 300px;
+        }
+
+        #searchbar-btn {
+            background-color: #333;
+            color: #FFF;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+
+        #logo_navbar:hover {
+            content: url("/media/logo_panda_alt.png")
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    $(document).ready(function () {
+        {#    $("#searchbar").hide()#}
+        $("#searchbar-btn").click(function () {
+            if ($("#searchbar"))
+                $("#searchbar").toggle()
+        });
+    });
+</script>
+
+<nav class="navbar navbar-inverse navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img id="logo_navbar" src="/media/logo_panda.png" width="60px" height="60px" alt="Image">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group input-group">
+                    <input type="text" id="searchbar" style="display:none;" class="form-control" placeholder="Search..">
+                    <span class="input-group-btn">
+            <button class="btn btn-default " id="searchbar-btn" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+          <a  style="color: white !important"
+               href="https://www.facebook.com/PandaSanProgrammer/">
+                <button class="btn btn-default " id="searchbar-btn" type="button" style="background-color: #5b80b2">
+                    <span class="fa fa-facebook-square fa-1,5x"></span>
+                </button>
+            </a>
+            <a  style="color: white !important"
+               href="https://www.youtube.com/channel/UCkN-HESxA4ZonUiWr7uWbDw">
+                <button class="btn btn-default " id="searchbar-btn" type="button" style="background-color: #cc1111">
+                    <span class="fa fa-youtube fa-1,5x"></span>
+                </button>
+            </a>
+          </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+{% block content %}
+{% endblock %}
+
+<footer class="container-fluid text-center"><hr>
+      <p>&copy;  Copyright 2017 by Krystian Zakryś <br>
+All rights reserved</p>
+</footer>
+
+</body>
+</html>
