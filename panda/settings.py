@@ -128,3 +128,10 @@ STATIC_ROOT = os.path.join(BASE_DIR,"static_cdn")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"media_cdn")
+
+#contact form
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'yeah sure ;) ' #change
+EMAIL_HOST_PASSWORD = 'definitely not working now :D'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

@@ -1,0 +1,80 @@
+{% extends 'Pandas/base.html' %}
+{% block title %}Contact - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <style>
+        .contact-form {
+            max-width: 500px;
+        }
+
+        .pull-right {
+            float: right !important;
+        }
+
+        .mycontent-left {
+            border-right: 1px solid #e2e2e2;
+        }
+
+        .image-center {
+            margin: auto;
+        !important;
+            width: 25%;
+        !important;
+            padding: 10px;
+        !important;
+        }
+        .other-contacts{
+            max-width: 450px;
+            margin: auto;
+            text-align: justify;
+        }
+    </style>
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h1>Contact</h1>
+            {% if message != None %}
+                {% if success == True %}
+                    <div class="alert alert-success">
+                        <strong>Success!</strong>
+                        <p>{{ message }}</p>
+                    </div>
+                {% endif %}
+                {% if success == False %}
+                    <div class="alert alert-danger">
+                        <strong>Upsss!</strong>
+                        <p>{{ message }}</p>
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if message == None %}
+                <p>Contact us if you want!</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="container-fluid bg-3">
+        <div class="row ">
+            <div class="col-md-6 mycontent-left">
+                <form role="form" action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-info pull-right">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-6 ">
+                <div class="text-center">
+                    <a href="/">
+                        <img class="logo_navbar image-center" src="/media/logo_panda.png" width="150px" height="160px"
+                             alt="Image">
+                    </a>
+                </div>
+                <div class="well well-large other-contacts">
+                                    <h4>Some other contact text: </h4>
+                    <p> <span class="glyphicon glyphicon-map-marker"> <b>Localization:</b></span>  &nbsp&nbsp Somewhere over the rainbow!</p>
+                    <p> <span class="glyphicon glyphicon-phone"> <b>Phone number:</b></span> &nbsp&nbsp +69 123 456 789</p>
+
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+{% endblock %}

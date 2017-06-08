@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home_view, name='home_view'),
     url(r'^tutorial/(?P<pk>[0-9]+)/$', views.tutorial_details, name='tutorial_details'),
+    url(r'^contact/$',views.contact,name='contact'),
+
 ]
 
 if settings.DEBUG:
