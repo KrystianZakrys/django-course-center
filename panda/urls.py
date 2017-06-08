@@ -19,13 +19,16 @@ from django.contrib import admin
 
 from Pandas import views
 from panda import settings
+from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home_view, name='home_view'),
     url(r'^tutorial/(?P<pk>[0-9]+)/$', views.tutorial_details, name='tutorial_details'),
-    url(r'^contact/$',views.contact,name='contact'),
-
+    url(r'^contact/$', views.contact, name='contact'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^about_scrollspy/', TemplateView.as_view(template_name="Pandas/about_scrollspy.html"),
+        name='about_scrollspy'),
 ]
 
 if settings.DEBUG:

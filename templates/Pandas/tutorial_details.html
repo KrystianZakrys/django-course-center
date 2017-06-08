@@ -27,15 +27,15 @@
     </div>
     <div class="container-fluid bg-3 text-center">
         <div class="row">
-            <h3>Odcinki <i>{{ liczba_odcinkow }}</i><b> / {{ tutorial.planowana_liczba_odcinkow }}</b></h3><br><br>
+            <h3>Episodes <i>{{ liczba_odcinkow }}</i><b> / {{ tutorial.planowana_liczba_odcinkow }}</b></h3><br><br>
             {% if liczba_odcinkow > 0 %}
                 <div class="container">
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Film</th>
-                            <th>Tytuł</th>
-                            <th>Opis</th>
+                            <th>Video</th>
+                            <th>Title</th>
+                            <th>Description</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -56,7 +56,7 @@
                 </div>
             {% else %}
                 <div class="alert alert-info" style="margin: 100px;">
-                    <h1><strong>Info!</strong> Kurs w chwili obecnej nie posiada żadnych odcinków</h1>
+                    <h1><strong>Info!</strong> This course currently has no episodes, please comeback later!</h1>
                 </div>
             {% endif %}
         </div>

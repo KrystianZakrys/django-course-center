@@ -1,0 +1,14 @@
+{% extends 'Pandas/base.html' %}
+{% block title %}About - {{ block.super }}{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid" >
+        <div class="row ">
+            <iframe class="spytest" src="{% url 'about_scrollspy' %}" style="margin:0; width: 100%; height: 485px; margin-top: 50px"
+                    scrolling="yes" frameborder="0">
+            </iframe>
+        </div>
+    </div><br>
+
+{% endblock %}

@@ -2,7 +2,7 @@
 ---
 - [ ] Better courses view
 - [ ] Expand footer
-- [ ] Subpages (about, contact etc.)
+- [x] Subpages (about, contact etc.)
 - [x] Contact subpage - sending email, other contact info placeholder...
 - [ ] About subpage - short description of webpage
 - [ ] Gallery - just for fun ;) 

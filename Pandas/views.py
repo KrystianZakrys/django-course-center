@@ -75,3 +75,6 @@ def contact(request):
         'message': None,
     }
     return render(request, 'Pandas/contact.html', context)
+
+def about(request):
+    return render(request, 'Pandas/about.html')
