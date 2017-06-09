@@ -16,3 +16,6 @@
 - [ ] Start implementing blog... 
 
 **To be continued...**
+
+How it looks for now...
+[[https://github.com/KrystianZakrys/django-course-center/blob/master/img/1.png|alt=Just starting]]
