@@ -1,0 +1,46 @@
+{% extends 'Pandas/base.html' %}
+
+{% block content %}
+    <style>
+        .post-content {
+            opacity: 0.8;
+            top: 0;
+            right: 0;
+            margin: 10px;
+            margin-right: 25px;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+        }
+
+        .thumbnail {
+            position: relative;
+            min-height: 131px;
+            min-width: 204px;
+        }
+
+
+    </style>
+
+            <div class="jumbotron">
+                <div class="container text-center">
+                    <h1>Welcome in our Gallery</h1>
+                    <p>Those are some of our memories!</p>
+                </div>
+            </div>
+
+        <div class="container-fluid bg-3 text-center">
+            <div class="row">
+                {% for album in albums %}
+                    <div class="col-sm-3">
+{#                        <a href="#">{% url 'album_photos' pk=album.pk %}#}
+                         <a href="#">
+                            <h2>{{ album.title }}</h2>
+                            <p>{{ album.description }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <br>
+{% endblock %}

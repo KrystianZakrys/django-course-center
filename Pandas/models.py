@@ -6,62 +6,62 @@ from django.db import models
 from django.utils import timezone
 
 class Item_Karuzeli(models.Model):
-    tytul = models.CharField(max_length=30)
-    krotki_opis = models.CharField(max_length=125)
-    zdjecie = models.FileField(null=False, blank=False)
+    title = models.CharField(max_length=30)
+    description = models.CharField(max_length=125)
+    picture = models.FileField(null=False, blank=False)
     tutorial_link = models.CharField(max_length=125,null=True,blank=True)
     webpage_link = models.CharField(max_length=125,null=True,blank=True)
-    aktywny = models.CharField(max_length=25,unique=True,null=True,blank=True)
+    active = models.CharField(max_length=25,unique=True,null=True,blank=True)
 
     def __str__(self):
-        return self.tytul
+        return self.title
 
     def __unicode__(self):
-        return self.tytul
+        return self.title
 
 class Tutorial(models.Model):
-    nazwa = models.CharField(max_length=100)
-    opis = models.TextField()
-    haslo = models.CharField(max_length=32, blank=True, null=True)
-    miniaturka = models.FileField(null = True, blank= True)
-    playlista = models.CharField(max_length=100,null = True, blank= True)
-    planowana_liczba_odcinkow = models.IntegerField(blank=True,null=True)
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    password = models.CharField(max_length=32, blank=True, null=True)
+    thumbnail = models.FileField(null = True, blank= True)
+    playlist = models.CharField(max_length=100,null = True, blank= True)
+    episodes_count = models.IntegerField(blank=True,null=True)
     def __str__(self):
-        return self.nazwa
+        return self.title
 
     def __unicode__(self):
-        return self.nazwa
+        return self.title
 
 class Video(models.Model):
-    tytul = models.CharField(max_length=100)
-    opis = models.TextField()
+    title = models.CharField(max_length=100)
+    description = models.TextField()
     tutorial = models.ForeignKey(Tutorial)
-    link_youtube = models.CharField(max_length=200)
+    youtube_link = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.tytul
+        return self.title
 
     def __unicode__(self):
-       return u"%s/%s" % (self.tytul, self.opis,)
+       return u"%s/%s" % (self.title, self.title,)
 
 
 class Tag(models.Model):
-    nazwa = models.CharField(max_length=24)
+    name = models.CharField(max_length=24)
 
     def __str__(self):
-        return self.nazwa
+        return self.name
 
     def __unicode__(self):
-        return self.nazwa
+        return self.name
 
 class Post(models.Model):
-    tytul = models.CharField(max_length=200)
-    skrocona_tresc = models.CharField(max_length=350, blank=True)
-    tresc = models.TextField(blank=True)
-    haslo = models.CharField(max_length=24, blank=True)
-    data = models.DateTimeField(auto_now=False, auto_now_add=True)
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=350, blank=True)
+    content = models.TextField(blank=True)
+    password = models.CharField(max_length=24, blank=True)
+    date = models.DateTimeField(auto_now=False, auto_now_add=True)
     tags = models.ManyToManyField(Tag)
-
+    post_thumbnail = models.FileField(null=True, blank=True)
     '''
     created_date = models.DateTimeField(
         default=timezone.now)
@@ -73,11 +73,35 @@ class Post(models.Model):
         self.save()
 
     def __str__(self):
-        return self.tytul
+        return self.title
 
     def __unicode__(self):
-        return self.tytul
+        return self.title
 # class Komentarz(models.Model):
 #     data = models.DateField(auto_now=False, auto_now_add=True)
 #     id_usera = models.ForeignKey(User, on_delete=models.CASCADE)
 #     tresc = models.TextField
+
+class Album(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=350, blank=True)
+    date = models.DateTimeField(auto_now=False, auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    def __unicode__(self):
+        return self.title
+
+class Photo(models.Model):
+    picture = models.FileField(null=True, blank=True)
+    describtion =  models.CharField(max_length=500, blank=True)
+    date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.describtion
+
+    def __unicode__(self):
+        return self.describtion
+

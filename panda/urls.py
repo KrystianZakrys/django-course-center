@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^about_scrollspy/', TemplateView.as_view(template_name="Pandas/about_scrollspy.html"),
         name='about_scrollspy'),
+    url(r'^gallery/$',views.gallery,name='gallery'),
 ]
 
 if settings.DEBUG:

@@ -37,18 +37,18 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
             {% for item in karuzela_items %}
-                 <li data-target="#myCarousel" data-slide-to="   {{ forloop.counter }} " class="{{ item.aktywny }}"></li>
+                 <li data-target="#myCarousel" data-slide-to="   {{ forloop.counter }} " class="{{ item.active }}"></li>
             {% endfor %}
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             {% for item in karuzela_items %}
-                <div class="item {{ item.aktywny }}">
-                    <img src="/media/{{ item.zdjecie }}" alt="Image">
+                <div class="item {{ item.active }}">
+                    <img src="/media/{{ item.picture }}" alt="Image">
                     <div class="carousel-caption">
-                        <h3>{{ item.tytul }}</h3>
-                        <p>{{ item.krotki_opis }}</p>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.describtion }}</p>
                     </div>
                 </div>
             {% endfor %}
@@ -78,15 +78,15 @@
                 {% for tutorial in tutoriale %}
                     <div class="col-sm-3">
                         <a href="{% url 'tutorial_details' pk=tutorial.pk %}">
-                            <img src="/media/{{ tutorial.miniaturka }}" class="img-rounded" style="width:100%"
+                            <img src="/media/{{ tutorial.thumbnail }}" class="img-rounded" style="width:100%"
                                  alt="Image">
-                            {% if not tutorial.playlista is None %}
-                                <a href="{{ tutorial.playlista }}"
+                            {% if not tutorial.playlist is None %}
+                                <a href="{{ tutorial.playlist }}"
                                    class="glyphicon glyphicon-play post-content btn btn-danger"
                                    style="padding-top: 6px"></a>
                             {% endif %}
-                            <h2>{{ tutorial.nazwa }}</h2>
-                            <p>{{ tutorial.opis }}</p>
+                            <h2>{{ tutorial.title }}</h2>
+                            <p>{{ tutorial.description }}</p>
                         </a>
                     </div>
                 {% endfor %}

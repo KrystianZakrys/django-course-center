@@ -104,4 +104,4 @@ ENV/
 
 # panda
 db.sqlite3
-media_cdn
+media_cdn/

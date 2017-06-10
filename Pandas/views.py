@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from models import Tutorial, Video, Item_Karuzeli
+from models import Tutorial, Video, Item_Karuzeli,Album,Photo
 
 
 # Create your views here.
@@ -19,8 +19,8 @@ def home_view(request):
 def tutorial_details(request, pk):
     tutorial = Tutorial.objects.get(pk=pk)
     videos = Video.objects.filter(tutorial_id=tutorial.id)
-    liczba_odcinkow = videos.count()
-    if not tutorial.haslo is None and not tutorial.haslo == '':
+    allEpisodesCount = videos.count()
+    if not tutorial.password is None and not tutorial.password == '':
         context = {
             'tutorial': None,
             'videos': None,
@@ -31,7 +31,7 @@ def tutorial_details(request, pk):
         context = {
             'tutorial': tutorial,
             'videos': videos,
-            'liczba_odcinkow': liczba_odcinkow,
+            'allEpisodesCount': allEpisodesCount,
         }
         return render(request, 'Pandas/tutorial_details.html', context)
 
@@ -78,3 +78,10 @@ def contact(request):
 
 def about(request):
     return render(request, 'Pandas/about.html')
+
+def gallery(request):
+    albums = Album.objects.all()
+    context = {
+        'albums' : albums,
+    }
+    return render(request, 'Pandas/gallery.html', context)
