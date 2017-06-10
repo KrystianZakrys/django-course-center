@@ -5,9 +5,9 @@
 - [ ] FIX FOOTER!
 - [x] Subpages (about, contact etc.)
 - [x] Contact subpage - sending email, other contact info placeholder...
-- [ ] About subpage - short description of webpage
+- [x] About subpage - short description of webpage
 - [ ] Gallery - just for fun ;) 
-- [ ] Make models for gallery (albums, photos)
+- [x] Make models for gallery (albums, photos)
 - [ ] Make models for blog
 - [ ] Make app managable!
 - [ ] CLEAN CLEAN CLEAN CLEAN CODE!
